@@ -7,14 +7,12 @@ public class GameManager : MonoBehaviour
 {
     public Image manaBar;
     public Image healthBar;
+    public PlayerSpawner spawner;
 
     // Start is called before the first frame update
     void Start()
     {
         GameData.game = new GameData();
-        GameData.game.player = new PlayerData();
-        GameData.game.player.hp = 100;
-        GameData.game.player.mana = 100;
         manaBar.fillAmount = GameData.game.player.mana / GameData.game.GetMaxMana();
         healthBar.fillAmount = GameData.game.player.hp / GameData.game.GetMaxHP();
     }
@@ -33,9 +31,9 @@ public class GameManager : MonoBehaviour
     public void LoseHP(int amount) {
         GameData.game.player.hp -= amount;
         if (GameData.game.player.hp <= 0) {
-            GameData.game.player.hp = 0;
+            GameData.game.player.hp = GameData.game.GetMaxHP();
+            spawner.Spawn();
         }
-        Debug.Log(GameData.game.player.hp);
         healthBar.fillAmount = (float)GameData.game.player.hp / GameData.game.GetMaxHP();
     }
 }

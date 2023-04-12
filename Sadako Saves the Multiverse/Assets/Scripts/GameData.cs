@@ -17,7 +17,14 @@ public class GameData
     public bool manaUpgradeC;
     public bool hoverUnlock;
     public bool invisibleUnlock;
+    public int spawnIndex;
+    public bool[] activatedTVs;
 
+    public GameData() {
+        player = new PlayerData();
+        activatedTVs = new bool[2];
+    }
+    
     public int GetMaxMana() {
         int amount = 100;
         if (manaUpgradeA) {
