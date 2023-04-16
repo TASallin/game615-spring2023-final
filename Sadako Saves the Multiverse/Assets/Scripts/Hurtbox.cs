@@ -6,6 +6,7 @@ public class Hurtbox : MonoBehaviour
 {
     public GameManager gm;
     public float iframes;
+    public Animator anim;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,6 +22,7 @@ public class Hurtbox : MonoBehaviour
     }
 
     public void Damage(int amount) {
+        anim.SetTrigger("Damage");
         gm.LoseHP(amount);
     }
 }

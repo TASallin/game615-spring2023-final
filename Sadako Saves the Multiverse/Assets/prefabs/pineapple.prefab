@@ -150,7 +150,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitbox: {fileID: 7973551632024041347}
   rend: {fileID: 7672866038459787132}
-  expandSpeed: 10
+  expandSpeed: 40
   fuseLength: 5
   col: {fileID: 7973551632024041344}
   rb: {fileID: 3446558758770415428}

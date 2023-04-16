@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     const float GRAVITY = 9.8f;
     float groundTimer;
     public GameManager gm;
+    bool stun;
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +24,16 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         float horiz = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
         bool hovering = Input.GetKey(KeyCode.LeftShift);
+
+        if (stun) {
+            horiz = 0;
+            vert = 0;
+            hovering = false;
+        }
 
         verticalVelocity -= GRAVITY * Time.deltaTime;
 
@@ -36,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
         transform.Rotate(new Vector3(0, horiz * turnSpeed * Time.deltaTime, 0));
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) && !stun) {
             if (groundTimer > 0) {
                 verticalVelocity = jumpStrength;
                 groundTimer = 0;
@@ -60,5 +68,13 @@ public class PlayerController : MonoBehaviour
         if (grounded) {
             groundTimer = 0.2f;
         }
+    }
+
+    public void StunPlayer() {
+        stun = true;
+    }
+
+    public void UnstunPlayer() {
+        stun = false;
     }
 }

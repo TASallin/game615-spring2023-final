@@ -52,7 +52,7 @@ public class PineappleAttack : AttackAI {
         GetComponent<Collider>().isTrigger = true;
         pineappleInstance.GetComponent<Collider>().isTrigger = false;
         float distance = Vector3.Distance(transform.position, lastKnownPosition);
-        float force = Mathf.Max(500, distance * 10);
+        float force = Mathf.Min(500, distance * 20);
         rb.AddForce(transform.forward * force + transform.up * force);
     }
 
