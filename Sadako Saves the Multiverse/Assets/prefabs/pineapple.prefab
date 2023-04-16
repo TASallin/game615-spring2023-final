@@ -136,6 +136,7 @@ MonoBehaviour:
   destroyOnHit: 0
   lifetime: 0.2
   iframes: 3
+  affectsEnemy: 1
 --- !u!114 &7973551632024041345
 MonoBehaviour:
   m_ObjectHideFlags: 0

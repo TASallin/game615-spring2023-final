@@ -8,6 +8,7 @@ public class Hitbox : MonoBehaviour
     public bool destroyOnHit;
     public float lifetime;
     public float iframes;
+    public bool affectsEnemy;
 
     // Start is called before the first frame update
     void Start()
@@ -28,7 +29,7 @@ public class Hitbox : MonoBehaviour
 
     void OnTriggerEnter(Collider other) {
 
-        if (other.gameObject.tag.Equals("Player")) {
+        if (other.gameObject.tag.Equals("Player") || (affectsEnemy && other.gameObject.GetComponent<Hurtbox>() != null)) {
             Hurtbox box = other.gameObject.GetComponent<Hurtbox>();
             if (box.iframes <= 0) {
                 box.Damage(power);

@@ -23,6 +23,11 @@ public class Hurtbox : MonoBehaviour
 
     public void Damage(int amount) {
         anim.SetTrigger("Damage");
-        gm.LoseHP(amount);
+        if (gameObject.tag.Equals("Player")) {
+            gm.LoseHP(amount);
+        } else if (GetComponent<EnemyScript>() != null) {
+            EnemyScript e = GetComponent<EnemyScript>();
+            e.Damage(amount);
+        }
     }
 }

@@ -55,5 +55,17 @@ public class EnemyScript : MonoBehaviour
         attackAI.enabled = false;
         patrol.Reawaken();
     }
+
+    public void Damage(int amount) {
+        hp -= amount;
+        if (hp <= 0) {
+            StartCoroutine(Die());
+        }
+    }
+
+    IEnumerator Die() {
+        yield return new WaitForSeconds(1);
+        Destroy(gameObject);
+    }
     
 }
