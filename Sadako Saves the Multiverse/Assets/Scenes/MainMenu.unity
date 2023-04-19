@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -358,9 +358,9 @@ MonoBehaviour:
       m_Calls: []
   m_text: No one would have believed that in the first years of the 21st century
     that GAME 615 was being watched by intelligences far more delicious than our
-    own. Yet across the depths of ciberspace slices, cheesy and saucy, regarded this
-    world with envious crusts, and slowly and greasily, they drew their plans against
-    us.
+    own. Yet across the depths of cyberspace slices, cheesy and saucy, regarded this
+    world with envious crusts and, slowly and greasily, they drew their plans against
+    us...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: ddddd2e7c73fffd499a83a978d702744, type: 2}
   m_sharedMaterial: {fileID: -1001345499350980374, guid: ddddd2e7c73fffd499a83a978d702744, type: 2}
