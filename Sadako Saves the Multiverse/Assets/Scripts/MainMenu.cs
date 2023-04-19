@@ -5,6 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
+    public GameObject introText;
+    public GameObject canvas;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +21,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void PlayButton() {
-        SceneManager.LoadScene("GameOver");
+        introText.SetActive(true);
+        canvas.SetActive(false);
     }
 }

@@ -6,6 +6,7 @@ public class TV : MonoBehaviour
 {
     public int id;
     bool inRange;
+    public GameObject menu;
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +25,7 @@ public class TV : MonoBehaviour
     void EnterTV() {
         GameData.game.activatedTVs[id] = true;
         GameData.game.spawnIndex = id;
-        Debug.Log("Sadako Sweep");
+        menu.SetActive(true);
     }
 
     void OnTriggerEnter(Collider other) {
