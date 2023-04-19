@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
         float horiz = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
         bool hovering = Input.GetKey(KeyCode.LeftShift);
+        if (!GameData.game.hoverUnlock) {
+            hovering = false;
+        }
 
         if (stun) {
             horiz = 0;

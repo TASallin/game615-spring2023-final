@@ -21,7 +21,7 @@ public class TVMenu : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+    
     }
 
     void CreateDisplay() {
@@ -39,6 +39,11 @@ public class TVMenu : MonoBehaviour
         Time.timeScale = 1;
         GameData.game.spawnIndex = i;
         spawner.Spawn();
+        gameObject.SetActive(false);
+    }
+
+    public void CloseMenu() {
+        Time.timeScale = 1;
         gameObject.SetActive(false);
     }
 }
