@@ -23,6 +23,7 @@ public class Upgrade : MonoBehaviour
     void OnTriggerEnter(Collider other) {
         if (other.gameObject.tag.Equals("Player")) {
             Collect(id);
+            other.gameObject.GetComponent<PlayerController>().PingData();
             Destroy(gameObject);
         }
     }

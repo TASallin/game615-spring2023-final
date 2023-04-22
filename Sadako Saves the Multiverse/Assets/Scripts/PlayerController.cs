@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerController : MonoBehaviour
 {
@@ -9,16 +10,27 @@ public class PlayerController : MonoBehaviour
     public float turnSpeed;
     public float jumpStrength;
     public float hoverCostMultiplier;
+    public GameObject projectile;
+    public Transform projectileSpawnPoint;
+    public GameObject gun;
     float verticalVelocity;
     const float GRAVITY = 9.8f;
     float groundTimer;
     public GameManager gm;
     bool stun;
+    bool canShoot;
+    public Animator gunAnim;
 
     // Start is called before the first frame update
     void Start()
     {
         verticalVelocity = 0;
+        canShoot = true;
+        try {
+            PingData();
+        } catch (Exception e) {
+
+        }
     }
 
     // Update is called once per frame
@@ -71,6 +83,10 @@ public class PlayerController : MonoBehaviour
         if (grounded) {
             groundTimer = 0.2f;
         }
+
+        if (canShoot && GameData.game.weaponPieceA && Input.GetKeyDown(KeyCode.H)) {
+            StartCoroutine(Shoot());
+        }
     }
 
     public void StunPlayer() {
@@ -79,5 +95,19 @@ public class PlayerController : MonoBehaviour
 
     public void UnstunPlayer() {
         stun = false;
+    }
+
+    IEnumerator Shoot() {
+        canShoot = false;
+        gunAnim.SetTrigger("Fire");
+        Instantiate(projectile, projectileSpawnPoint.position, transform.rotation);
+        yield return new WaitForSeconds(3f);
+        canShoot = true;
+    }
+
+    public void PingData() {
+        if (GameData.game.weaponPieceA) {
+            gun.SetActive(true);
+        }
     }
 }
