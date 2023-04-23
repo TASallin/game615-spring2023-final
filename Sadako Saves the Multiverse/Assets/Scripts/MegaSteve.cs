@@ -23,6 +23,7 @@ public class MegaSteve : MonoBehaviour
     public Vector3 knobB;
     public Vector3 knobC;
     public Vector3 knobD;
+    public GameObject phase2;
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +55,9 @@ public class MegaSteve : MonoBehaviour
     }
 
     void StateChange() {
+        if (hp <= 0) {
+            return;
+        }
         if (state > 0) {
             state = 0;
             Wander();
@@ -87,7 +91,7 @@ public class MegaSteve : MonoBehaviour
         while (countdown > 0) {
             Vector3 positionNoY = new Vector3(transform.position.x, target.y, transform.position.z);
             Vector3 newPosition = positionNoY + targetDir * Time.deltaTime * 20;
-            float yValue = target.y - 6 + 6 * Mathf.Abs(0.5f - countdown / 4f);
+            float yValue = target.y - 12 + 12 * Mathf.Abs(0.5f - countdown / 4f);
             float xValue = Mathf.Clamp(newPosition.x, minX, maxX);
             float zValue = Mathf.Clamp(newPosition.z, minZ, maxZ);
             countdown -= Time.deltaTime;
@@ -106,7 +110,7 @@ public class MegaSteve : MonoBehaviour
         while (countdown > 0) {
             Vector3 positionNoY = new Vector3(transform.position.x, target.y, transform.position.z);
             Vector3 newPosition = positionNoY + targetDir * Time.deltaTime * 25;
-            float yValue = target.y - 6 + 6 * Mathf.Abs(0.5f - countdown / 4f);
+            float yValue = target.y - 12 + 12 * Mathf.Abs(0.5f - countdown / 4f);
             float xValue = Mathf.Clamp(newPosition.x, minX, maxX);
             float zValue = Mathf.Clamp(newPosition.z, minZ, maxZ);
             countdown -= Time.deltaTime;
@@ -125,7 +129,7 @@ public class MegaSteve : MonoBehaviour
         while (countdown > 0) {
             Vector3 positionNoY = new Vector3(transform.position.x, target.y, transform.position.z);
             Vector3 newPosition = positionNoY + targetDir * Time.deltaTime * 30;
-            float yValue = target.y - 6 + 6 * Mathf.Abs(0.5f - countdown / 4f);
+            float yValue = target.y - 12 + 12 * Mathf.Abs(0.5f - countdown / 4f);
             float xValue = Mathf.Clamp(newPosition.x, minX, maxX);
             float zValue = Mathf.Clamp(newPosition.z, minZ, maxZ);
             countdown -= Time.deltaTime;
@@ -185,7 +189,29 @@ public class MegaSteve : MonoBehaviour
     public void Damage() {
         hp -= 1;
         if (hp <= 0) {
-            Debug.Log("Kill");
+            StopCoroutine(ISpin());
+            StopCoroutine(IBurner());
+            burnerA.SetActive(false);
+            burnerB.SetActive(false);
+            burnerC.SetActive(false);
+            burnerD.SetActive(false);
+            StartCoroutine(Die());
         }
+    }
+
+    IEnumerator Die() {
+        anim.SetTrigger("Dying");
+        agent.enabled = false;
+        while (transform.position.z < maxZ) {
+            transform.Translate(0, 0, 40 * Time.deltaTime, Space.World);
+            yield return null;
+        }
+        anim.SetTrigger("Shaking");
+        transform.rotation = Quaternion.Euler(0, 180, 0);
+        yield return new WaitForSeconds(4f);
+        anim.SetTrigger("Falling");
+        yield return new WaitForSeconds(3f);
+        phase2.SetActive(true);
+        Destroy(gameObject);
     }
 }

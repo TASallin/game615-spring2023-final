@@ -5,6 +5,7 @@ using UnityEngine;
 public class WeakPointSteve : MonoBehaviour
 {
     public MegaSteve boss;
+    public UltraSteve otherBoss;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +19,10 @@ public class WeakPointSteve : MonoBehaviour
     }
 
     void OnDestroy() {
-        boss.Damage();
+        if (boss) {
+            boss.Damage();
+        } else {
+            otherBoss.Damage();
+        }
     }
 }
