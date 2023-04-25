@@ -11,6 +11,7 @@ public class PineappleBomb : MonoBehaviour
     public Collider col;
     public Rigidbody rb;
     bool expanding;
+    public GameObject particles;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,5 +38,6 @@ public class PineappleBomb : MonoBehaviour
         rb.isKinematic = true;
         col.isTrigger = true;
         expanding = true;
+        particles.SetActive(true);
     }
 }

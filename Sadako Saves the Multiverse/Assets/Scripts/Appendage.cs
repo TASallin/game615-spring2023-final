@@ -5,16 +5,19 @@ using UnityEngine;
 public class Appendage : MonoBehaviour
 {
     float lifetime;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
-        lifetime = 3f;
+        lifetime = 5f;
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(0, 30 * Time.deltaTime, 0, Space.World);
-
+        if (lifetime > 0) {
+            transform.Translate(0, speed * Time.deltaTime, 0, Space.World);
+            lifetime -= Time.deltaTime;
+        }
     }
 }

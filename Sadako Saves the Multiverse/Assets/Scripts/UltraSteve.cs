@@ -21,11 +21,14 @@ public class UltraSteve : MonoBehaviour
     public GameObject weakPointC;
     float attackCooldown;
     public GameObject steveStrike;
+    public GameObject steveRain;
+    public GameObject arms;
 
     // Start is called before the first frame update
     void Start()
     {
         attackCooldown = 5f;
+        arms.SetActive(true);
     }
 
     // Update is called once per frame
@@ -57,6 +60,7 @@ public class UltraSteve : MonoBehaviour
     }
 
     IEnumerator SteveSummon() {
+        steveRain.SetActive(true);
         yield return new WaitForSeconds(3f);
         float x = Random.Range(minX, maxX);
         float z = Random.Range(minZ, maxZ);
@@ -104,6 +108,7 @@ public class UltraSteve : MonoBehaviour
         }
         SetupSummon(steve);
         yield return new WaitForSeconds(3f);
+        steveRain.SetActive(false);
         StateChange();
     }
 
