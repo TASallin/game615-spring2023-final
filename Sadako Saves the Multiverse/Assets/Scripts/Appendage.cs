@@ -16,7 +16,7 @@ public class Appendage : MonoBehaviour
     void Update()
     {
         if (lifetime > 0) {
-            transform.Translate(0, speed * Time.deltaTime, 0, Space.World);
+            transform.position = transform.position + new Vector3(0, speed * Time.deltaTime, 0);
             lifetime -= Time.deltaTime;
         }
     }

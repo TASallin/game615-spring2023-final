@@ -11,7 +11,9 @@ public class PlayerSpawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       
+       if (GameData.game != null) {
+            Spawn();
+        }
     }
 
     // Update is called once per frame

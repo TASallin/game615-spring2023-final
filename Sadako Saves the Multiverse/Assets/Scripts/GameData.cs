@@ -19,10 +19,11 @@ public class GameData
     public bool invisibleUnlock;
     public int spawnIndex;
     public bool[] activatedTVs;
+    public bool sawTutorial;
 
     public GameData() {
         player = new PlayerData();
-        activatedTVs = new bool[2];
+        activatedTVs = new bool[4];
     }
     
     public int GetMaxMana() {

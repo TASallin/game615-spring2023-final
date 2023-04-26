@@ -42,6 +42,7 @@ public class PineappleAttack : AttackAI {
         anim.SetTrigger("Attack");
         cooldown = 8f;
         aiming = true;
+        Debug.Log("Attacking!");
         pineappleInstance.GetComponent<PineappleBomb>().LightFuse();
     }
 
@@ -61,5 +62,6 @@ public class PineappleAttack : AttackAI {
         GetComponent<Collider>().isTrigger = false;
         pineappleInstance = Instantiate(pineapple, pineappleSpawnPoint, Quaternion.identity, modelTransform);
         pineappleInstance.transform.localPosition = pineappleSpawnPoint;
+        pineappleInstance.GetComponent<Hitbox>().affectsEnemy = false;
     }
 }

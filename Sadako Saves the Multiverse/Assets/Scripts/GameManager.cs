@@ -12,7 +12,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameData.game = new GameData();
+        if (GameData.game == null) {
+            GameData.game = new GameData();
+        }
+        
         manaBar.fillAmount = GameData.game.player.mana / GameData.game.GetMaxMana();
         healthBar.fillAmount = GameData.game.player.hp / GameData.game.GetMaxHP();
     }
@@ -32,6 +35,7 @@ public class GameManager : MonoBehaviour
         GameData.game.player.hp -= amount;
         if (GameData.game.player.hp <= 0) {
             GameData.game.player.hp = GameData.game.GetMaxHP();
+            GameData.game.player.mana = GameData.game.GetMaxMana();
             spawner.Spawn();
         }
         healthBar.fillAmount = (float)GameData.game.player.hp / GameData.game.GetMaxHP();

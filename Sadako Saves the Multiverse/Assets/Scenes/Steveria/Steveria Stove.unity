@@ -21354,6 +21354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slingshot Piece
       objectReference: {fileID: 0}
+    - target: {fileID: 2363352760306814848, guid: 4151a23e7bbb5b54c9f0e1b5e170cd0e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2363352760306814849, guid: 4151a23e7bbb5b54c9f0e1b5e170cd0e, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -41770,6 +41774,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3555341833876778068, guid: 4bc752994827b5d408a3a282e7d56205, type: 3}
+      propertyPath: m_ClearFlags
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555341833876778068, guid: 4bc752994827b5d408a3a282e7d56205, type: 3}
+      propertyPath: m_BackGroundColor.b
+      value: 0.032111038
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555341833876778068, guid: 4bc752994827b5d408a3a282e7d56205, type: 3}
+      propertyPath: m_BackGroundColor.g
+      value: 0.36848322
+      objectReference: {fileID: 0}
+    - target: {fileID: 3555341833876778068, guid: 4bc752994827b5d408a3a282e7d56205, type: 3}
+      propertyPath: m_BackGroundColor.r
+      value: 0.7735849
+      objectReference: {fileID: 0}
     - target: {fileID: 3555341833927576825, guid: 4bc752994827b5d408a3a282e7d56205, type: 3}
       propertyPath: m_Name
       value: Camera Stand

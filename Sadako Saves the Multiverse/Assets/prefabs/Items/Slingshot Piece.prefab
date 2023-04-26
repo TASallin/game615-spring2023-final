@@ -61,6 +61,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   model: {fileID: 5680377902251039037}
   id: 4
+  popup: {fileID: 0}
+  description: You got the entire rocket launcher at once! Press H to fire. Now you
+    can break the car that's covering the well
 --- !u!1001 &3355122559660976738
 PrefabInstance:
   m_ObjectHideFlags: 0

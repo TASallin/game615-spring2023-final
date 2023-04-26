@@ -53,7 +53,7 @@ public class BuffaloAttack : AttackAI
         agent.speed = 0;
         agent.enabled = false;
         cooldown = 5f;
-        rb.velocity = transform.forward * 14;
+        rb.velocity = transform.forward * 11;
     }
 
     void OnCollisionEnter(Collision col) {

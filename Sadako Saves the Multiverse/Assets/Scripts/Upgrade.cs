@@ -7,6 +7,8 @@ public class Upgrade : MonoBehaviour
     public Transform model;
     public int id;
     const float TURNSPEED = 80f;
+    public UpgradeUI popup;
+    public string description;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +31,8 @@ public class Upgrade : MonoBehaviour
     }
 
     void Collect(int id) {
+        popup.gameObject.SetActive(true);
+        popup.SetText(description);
         switch (id) {
             case 0:
                 GameData.game.hoverUnlock = true;

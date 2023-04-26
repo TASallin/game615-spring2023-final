@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenu : MonoBehaviour
+public class LoadingZone : MonoBehaviour
 {
-    public GameObject introText;
-    public GameObject canvas;
+    public string scene;
+    public int spawnIndex;
 
     // Start is called before the first frame update
     void Start()
@@ -20,9 +20,10 @@ public class MainMenu : MonoBehaviour
         
     }
 
-    public void PlayButton() {
-        introText.SetActive(true);
-        GameData.game = new GameData();
-        canvas.SetActive(false);
+    void OnTriggerEnter(Collider other) {
+        if (other.gameObject.tag.Equals("Player")) {
+            GameData.game.spawnIndex = spawnIndex;
+            SceneManager.LoadScene(scene);
+        }
     }
 }

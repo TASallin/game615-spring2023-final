@@ -34,6 +34,7 @@ public class PineappleBomb : MonoBehaviour
     IEnumerator BombsAway() {
         yield return new WaitForSeconds(fuseLength);
         hitbox.enabled = true;
+        hitbox.affectsEnemy = true;
         rend.enabled = false;
         rb.isKinematic = true;
         col.isTrigger = true;

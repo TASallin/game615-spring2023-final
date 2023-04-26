@@ -13,6 +13,7 @@ public class Patrol : MonoBehaviour
     int index;
     float countdown;
     public float turnSpeed;
+    float timeout;
 
     // Start is called before the first frame update
     void Start()
@@ -20,6 +21,7 @@ public class Patrol : MonoBehaviour
         index = 0;
         countdown = 0;
         agent.speed = moveSpeed;
+        timeout = 20;
     }
 
     // Update is called once per frame
@@ -33,7 +35,9 @@ public class Patrol : MonoBehaviour
                 NextPath();
             }
         } else {
-            if (Vector3.Distance(transform.position, patrolPositions[index]) < 0.2f) {
+            timeout -= Time.deltaTime;
+            Vector3 augmentedPosition = new Vector3(transform.position.x, patrolPositions[index].y, transform.position.z);
+            if (Vector3.Distance(augmentedPosition, patrolPositions[index]) < 0.2f || timeout <= 0) {
                 countdown = patrolDelays[index];
             }
         }
@@ -42,6 +46,7 @@ public class Patrol : MonoBehaviour
     void NextPath() {
         index = (index + 1) % patrolPositions.Count;
         agent.SetDestination(patrolPositions[index]);
+        timeout = 20;
     }
 
     public void Reawaken() {

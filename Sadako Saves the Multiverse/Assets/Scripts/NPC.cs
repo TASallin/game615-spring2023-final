@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TV : MonoBehaviour
+public class NPC : MonoBehaviour
 {
-    public int id;
     bool inRange;
-    public GameObject menu;
+    public UpgradeUI popup;
+    public string description;
 
     // Start is called before the first frame update
     void Start()
@@ -18,15 +18,9 @@ public class TV : MonoBehaviour
     void Update()
     {
         if (inRange && Input.GetKeyDown(KeyCode.I)) {
-            EnterTV();
+            popup.gameObject.SetActive(true);
+            popup.SetText(description);
         }
-    }
-
-    void EnterTV() {
-        GameData.game.activatedTVs[id] = true;
-        GameData.game.spawnIndex = id;
-        GameData.game.player.mana = GameData.game.GetMaxMana();
-        menu.SetActive(true);
     }
 
     void OnTriggerEnter(Collider other) {

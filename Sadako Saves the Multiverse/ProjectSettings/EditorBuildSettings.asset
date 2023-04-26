@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/HUB AREA.unity
     guid: a436328b071744d43a40820cca98c2a7
+  - enabled: 1
+    path: Assets/Scenes/Temple of Steve/Temple.unity
+    guid: 5a5dc83f3228584438362aedf35e945d
+  - enabled: 1
+    path: Assets/Scenes/Steveria/Steveria Stove.unity
+    guid: 36e80f52aed67464aa0d7d523453a929
   m_configObjects: {}

@@ -31,6 +31,8 @@ public class Hurtbox : MonoBehaviour
             e.Damage(amount);
         } else if (GetComponent<WeakPointSteve>() != null) {
             Destroy(gameObject);
+        } else {
+            Destroy(gameObject);
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class UltraSteve : MonoBehaviour
 {
@@ -145,7 +146,7 @@ public class UltraSteve : MonoBehaviour
     public void Damage() {
         hp -= 1;
         if (hp <= 0) {
-            Debug.Log("Kill");
+            SceneManager.LoadScene("GameOver");
         } else {
             StateChange();
         }
